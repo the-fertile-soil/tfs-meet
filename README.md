@@ -3,7 +3,11 @@
 A self-hosted meeting service built on [Jitsi Meet](https://jitsi.org), made for small nonprofits.
 It adds scheduling, automatic recording, transcripts, summaries and private review links on top of a standard Jitsi docker install, with no accounts for guests.
 
-Built by [The Fertile Soil](https://thefertilesoil.org), shared so other organizations can run the same thing. See it in use at [thefertilesoil.org/meetings](https://thefertilesoil.org/meetings/).
+Built by [The Fertile Soil](https://thefertilesoil.org/), shared so other organizations can run the same thing.
+
+Read what it does: [Free video meetings from The Fertile Soil](https://thefertilesoil.org/free-video-meetings-from-the-fertile-soil/)
+
+See it in use at [thefertilesoil.org/meetings](https://thefertilesoil.org/meetings/).
 
 ## What it does
 
