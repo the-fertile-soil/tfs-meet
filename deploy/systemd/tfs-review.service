@@ -1,0 +1,13 @@
+[Unit]
+Description=TFS meeting recording upload service
+After=network.target mnt-tfs\x2dmeetings.mount
+
+[Service]
+WorkingDirectory=/opt/tfs-review
+ExecStart=/opt/tfs-review/venv/bin/uvicorn app:app --host 127.0.0.1 --port 8100 --no-access-log
+Restart=on-failure
+MemoryMax=600M
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target

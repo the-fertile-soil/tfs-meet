@@ -1,0 +1,84 @@
+services:
+  web:
+    ports: !override
+      - "127.0.0.1:8000:8000"
+  jibri:
+    cap_add:
+      - SYS_ADMIN
+      - NET_BIND_SERVICE
+    devices:
+      - /dev/snd:/dev/snd
+    mem_limit: 2500m
+    cpus: 2
+  jibri1:
+    extends:
+      file: jibri.yml
+      service: jibri
+    container_name: jitsi-jibri1
+    cap_add:
+      - SYS_ADMIN
+      - NET_BIND_SERVICE
+    devices:
+      - /dev/snd:/dev/snd
+    mem_limit: 2500m
+    cpus: 2
+    environment:
+      - JIBRI_INSTANCE_ID=tfs-jibri-1
+    volumes:
+      - /opt/jitsi-cfg/jibri1:/config:Z
+      - /opt/jitsi-cfg/storage/jibri1:/storage:Z
+      - /opt/jitsi-cfg/jibri1/asoundrc:/home/s6/.asoundrc:ro
+  jibri2:
+    extends:
+      file: jibri.yml
+      service: jibri
+    container_name: jitsi-jibri2
+    cap_add:
+      - SYS_ADMIN
+      - NET_BIND_SERVICE
+    devices:
+      - /dev/snd:/dev/snd
+    mem_limit: 2500m
+    cpus: 2
+    environment:
+      - JIBRI_INSTANCE_ID=tfs-jibri-2
+    volumes:
+      - /opt/jitsi-cfg/jibri2:/config:Z
+      - /opt/jitsi-cfg/storage/jibri2:/storage:Z
+      - /opt/jitsi-cfg/jibri2/asoundrc:/home/s6/.asoundrc:ro
+  jibri3:
+    extends:
+      file: jibri.yml
+      service: jibri
+    container_name: jitsi-jibri3
+    cap_add:
+      - SYS_ADMIN
+      - NET_BIND_SERVICE
+    devices:
+      - /dev/snd:/dev/snd
+    mem_limit: 2500m
+    cpus: 2
+    environment:
+      - JIBRI_INSTANCE_ID=tfs-jibri-3
+    volumes:
+      - /opt/jitsi-cfg/jibri3:/config:Z
+      - /opt/jitsi-cfg/storage/jibri3:/storage:Z
+      - /opt/jitsi-cfg/jibri3/asoundrc:/home/s6/.asoundrc:ro
+  jibri4:
+    extends:
+      file: jibri.yml
+      service: jibri
+    container_name: jitsi-jibri4
+    cap_add:
+      - SYS_ADMIN
+      - NET_BIND_SERVICE
+    devices:
+      - /dev/snd:/dev/snd
+    mem_limit: 2500m
+    cpus: 2
+    environment:
+      - JIBRI_INSTANCE_ID=tfs-jibri-4
+    volumes:
+      - /opt/jitsi-cfg/jibri4:/config:Z
+      - /opt/jitsi-cfg/storage/jibri4:/storage:Z
+      - /opt/jitsi-cfg/jibri4/asoundrc:/home/s6/.asoundrc:ro

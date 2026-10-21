@@ -1,0 +1,10 @@
+[Unit]
+Description=Check for host replies every minute
+
+[Timer]
+OnBootSec=3min
+OnUnitInactiveSec=60s
+AccuracySec=10s
+
+[Install]
+WantedBy=timers.target

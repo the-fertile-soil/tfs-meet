@@ -1,0 +1,8 @@
+[Unit]
+Description=Nightly TFS meeting server backup to the storage box
+After=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/tfs-backup.sh
+Nice=15

@@ -1,0 +1,10 @@
+[Unit]
+Description=Check every 10 seconds whether a meeting is running
+
+[Timer]
+OnBootSec=30s
+OnUnitInactiveSec=10s
+AccuracySec=1s
+
+[Install]
+WantedBy=timers.target

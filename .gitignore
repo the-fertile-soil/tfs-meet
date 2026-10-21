@@ -1,0 +1,17 @@
+uploads/
+voices/
+schedules/
+hosts/
+models/
+diar/
+venv/
+__pycache__/
+*.log
+*.bak*
+mail.json
+jwt.json
+access.json
+admin.token
+wp.key
+config.php
+.env

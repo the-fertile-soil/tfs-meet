@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>Invitation: {{TITLE}}</title>
+</head>
+<body style="margin:0;padding:0;background:#f4eadc;">
+<div style="display:none;max-height:0;overflow:hidden;opacity:0;color:#f4eadc;">{{SHORT}}. Your join link is inside.</div>
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#f4eadc;">
+<tr><td align="center" style="padding:24px 12px;">
+
+<table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0" style="width:100%;max-width:600px;">
+
+
+
+<!-- hero -->
+<tr><td bgcolor="#4a5e3d" style="background:#4a5e3d;border-radius:14px 14px 0 0;padding:28px 32px 26px 32px;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
+<td width="64" valign="middle" style="width:64px;">
+<table role="presentation" cellpadding="0" cellspacing="0" border="0"><tr><td bgcolor="#fffdf9" style="background:#fffdf9;border-radius:32px;width:56px;height:56px;text-align:center;">
+<img src="https://meet.example.org/images/tfs-logo.png" width="44" height="44" alt="Example Org" style="display:block;margin:6px auto;border:0;border-radius:22px;">
+</td></tr></table>
+</td>
+<td valign="middle" style="padding-left:14px;font-family:system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;">
+<div style="font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#e1efd9;">Example Org</div>
+<div style="font-family:Georgia,'Times New Roman',serif;font-size:22px;line-height:1.25;color:#ffffff;padding-top:2px;">Come build something.</div>
+</td>
+</tr></table>
+</td></tr>
+
+<!-- terracotta rule -->
+<tr><td bgcolor="#c0562b" height="4" style="background:#c0562b;height:4px;line-height:4px;font-size:0;">&nbsp;</td></tr>
+
+<!-- card -->
+<tr><td bgcolor="#fffdf9" style="background:#fffdf9;border-left:1px solid #e6d9c8;border-right:1px solid #e6d9c8;padding:32px 32px 8px 32px;font-family:system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;color:#2e2118;">
+
+<div style="font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#c0562b;font-weight:700;">You're invited!</div>
+<h1 style="margin:8px 0 6px 0;font-family:Georgia,'Times New Roman',serif;font-size:32px;line-height:1.15;color:#2e2118;font-weight:700;">{{TITLE}}</h1>
+<p style="margin:0 0 24px 0;font-size:16px;line-height:1.55;color:#6b5a4b;">Join us for a free video meeting on Example Org's own meeting service. No account needed.</p>
+
+<!-- when -->
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#f4eadc;border:1px solid #e6d9c8;border-radius:12px;">
+<tr>
+<td width="84" align="center" valign="middle" style="width:84px;padding:16px 0 16px 18px;">
+<table role="presentation" width="68" cellpadding="0" cellspacing="0" border="0" style="width:68px;background:#fffdf9;border:1px solid #e6d9c8;border-radius:10px;">
+<tr><td align="center" style="background:#5f7650;border-radius:9px 9px 0 0;color:#ffffff;font-size:12px;letter-spacing:2px;font-weight:700;padding:4px 0;">{{MON}}</td></tr>
+<tr><td align="center" style="font-family:Georgia,'Times New Roman',serif;font-size:30px;line-height:1.1;color:#2e2118;font-weight:700;padding:6px 0 8px 0;">{{DAYNUM}}</td></tr>
+</table>
+</td>
+<td valign="middle" style="padding:16px 18px;">
+<div style="font-family:Georgia,'Times New Roman',serif;font-size:20px;line-height:1.3;color:#2e2118;font-weight:700;">{{DATE}}</div>
+<div style="font-size:16px;line-height:1.5;color:#2e2118;">{{TIME}}</div>
+<div style="font-size:14px;line-height:1.5;color:#6b5a4b;">Up to 90 minutes. The room opens 15 minutes early.</div>
+</td>
+</tr>
+</table>
+
+<!-- primary button -->
+<table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin:28px 0 10px 0;width:100%;">
+<tr><td align="center" bgcolor="#5f7650" style="background:#5f7650;border-radius:999px;">
+<a href="https://meet.example.org/{{ROOM}}" style="display:block;padding:16px 24px;font-family:system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;font-size:18px;font-weight:700;color:#ffffff;text-decoration:none;border-radius:999px;">Join the meeting</a>
+</td></tr>
+</table>
+<p style="margin:0 0 24px 0;font-size:13px;line-height:1.5;color:#6b5a4b;text-align:center;word-break:break-all;">Or paste this link into your browser:<br><a href="https://meet.example.org/{{ROOM}}" style="color:#4a5e3d;">https://meet.example.org/{{ROOM}}</a></p>
+
+{{FILES}}
+<!-- add to calendar -->
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-top:1px solid #e6d9c8;">
+<tr><td style="padding:18px 0 6px 0;font-size:14px;line-height:1.6;color:#2e2118;">
+<strong>Add it to your calendar</strong><br>
+<a href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text={{TITLEURL}}&amp;dates={{GSTART}}%2F{{GEND}}&amp;details=Join%20at%20https%3A%2F%2Fmeet.example.org%2F{{ROOM}}&amp;location=https%3A%2F%2Fmeet.example.org%2F{{ROOM}}" style="color:#c0562b;font-weight:700;">Add to Google Calendar</a>
+<span style="color:#6b5a4b;"> &nbsp;or open the attached calendar file for Apple Calendar and Outlook.</span>
+</td></tr>
+</table>
+
+<!-- host -->
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-top:14px;background:#fffdf9;border:1px solid #e6d9c8;border-radius:12px;">
+<tr><td style="padding:16px 18px;font-size:14px;line-height:1.6;color:#2e2118;">
+<strong>Hosting this meeting?</strong><br>
+<a href="https://meet.example.org/?room={{ROOM}}" style="color:#4a5e3d;font-weight:700;">Start it here</a> using the same email address this invitation was sent to. You can start from 15 minutes before.
+</td></tr>
+</table>
+
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:14px 0 0 0;background:#f4eadc;border:1px solid #e6d9c8;border-radius:12px;"><tr><td style="padding:16px 20px;font-family:system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;font-size:14px;line-height:1.6;color:#2e2118;"><div style="font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#c0562b;font-weight:700;">Trouble joining?</div><div style="padding-top:6px;"><strong>1.</strong> Open the link in Chrome or Firefox.<br><strong>2.</strong> Turn off content blockers for meet.example.org.<br><strong>3.</strong> Allow camera and microphone when asked.</div><div style="padding-top:8px;color:#6b5a4b;font-size:13px;">Safari with strict privacy settings is the most common cause.</div></td></tr></table>
+
+{{MANAGE}}
+<!-- notice -->
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:22px 0 26px 0;"><tr><td bgcolor="#fff1d6" style="background:#fff1d6;border:3px solid #c0562b;border-radius:12px;padding:20px 22px;font-family:system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;color:#2e2118;"><div style="font-size:24px;line-height:1.25;font-weight:800;color:#a8431a;"><span style="color:#d6281b;">&#9679;</span>&nbsp; Please note: this meeting is recorded.</div><div style="font-size:15px;line-height:1.65;padding-top:10px;">It is recorded, transcribed, and summarized by AI software on Example Org's own server. After the meeting, you will get an email with a private link to the summary. Recordings that are not saved are deleted automatically after 30 days.</div><div style="font-size:16px;line-height:1.6;padding-top:12px;font-weight:800;color:#a8431a;">By joining, you agree to be recorded. If you do not want to be recorded, tell the host before the meeting starts.</div></td></tr></table>
+
+</td></tr>
+
+<!-- footer -->
+<tr><td bgcolor="#1f2a1a" style="background:#1f2a1a;border-radius:0 0 14px 14px;padding:22px 32px;font-family:system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;font-size:13px;line-height:1.6;color:#d8e3d0;">
+Questions? <a href="mailto:meetings-admin@example.org" style="color:#ffe2cf;">meetings-admin@example.org</a><br>
+<span style="color:#aebfa4;">Example Org.</span>
+</td></tr>
+
+</table>
+</td></tr>
+</table>
+</body>
+</html>

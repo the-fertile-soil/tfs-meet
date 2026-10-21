@@ -1,0 +1,5 @@
+-- Put in conf.d/ of the Prosody config. The focus user and the hidden Jibri recorder do not count toward the cap.
+muc_max_occupants = 8
+muc_access_whitelist = { "auth.meet.jitsi", "hidden.meet.jitsi" }
+tfs_meeting_limit_seconds = 5400
+tfs_meeting_warn_seconds = 5100

@@ -1,0 +1,7 @@
+[Unit]
+Description=Pause TFS transcription while meetings are running
+
+[Service]
+Type=oneshot
+WorkingDirectory=/opt/tfs-review
+ExecStart=/opt/tfs-review/venv/bin/python /opt/tfs-review/quiet_watch.py

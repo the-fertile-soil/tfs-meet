@@ -1,0 +1,7 @@
+[Unit]
+Description=Move finished Jibri recordings to the TFS pipeline
+After=mnt-tfs\\x2dmeetings.mount
+
+[Service]
+Type=oneshot
+ExecStart=/opt/tfs-review/venv/bin/python /opt/tfs-review/ingest_jibri.py

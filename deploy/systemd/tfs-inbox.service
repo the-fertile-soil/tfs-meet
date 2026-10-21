@@ -1,0 +1,9 @@
+[Unit]
+Description=Read host replies with corrected transcripts
+
+[Service]
+Type=oneshot
+WorkingDirectory=/opt/tfs-review
+ExecStart=/opt/tfs-review/venv/bin/python /opt/tfs-review/transcripts_inbox.py
+Nice=10
+MemoryMax=300M

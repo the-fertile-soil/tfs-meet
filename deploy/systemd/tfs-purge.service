@@ -1,0 +1,7 @@
+[Unit]
+Description=TFS delete unsaved meetings older than the retention setting
+
+[Service]
+Type=oneshot
+ExecStart=/opt/tfs-review/venv/bin/python /opt/tfs-review/purge.py
+Nice=10

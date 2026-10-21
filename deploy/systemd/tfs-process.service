@@ -1,0 +1,10 @@
+[Unit]
+Description=TFS meeting recording transcription worker
+
+[Service]
+Type=oneshot
+WorkingDirectory=/opt/tfs-review
+ExecStart=/opt/tfs-review/venv/bin/python /opt/tfs-review/process.py
+Nice=15
+MemoryMax=6000M
+TimeoutStartSec=12h

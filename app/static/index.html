@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Free meetings | Example Org</title>
+<style>
+:root{--g:#5f7650;--gd:#4a5e3d;--t:#c0562b;--ink:#2e2118;--mut:#6b5a4b;--card:#fffdf9;--line:#e6d9c8;--soft:#f4eadc}
+*{box-sizing:border-box}
+body{margin:0;overflow-x:hidden;font-family:Georgia,"Times New Roman",serif;color:var(--ink);background:var(--soft);line-height:1.6}
+.sans{font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+header{background:#f9efe5;border-bottom:1px solid var(--line);padding:16px 24px;display:flex;justify-content:space-between;align-items:center}
+header a{color:var(--ink);text-decoration:none;font-weight:700}
+header nav a{margin-left:20px;font-weight:400;padding:4px 0}
+.wrap{max-width:900px;margin:0 auto;padding:0 20px}
+.hero{position:relative;overflow:hidden;text-align:center;padding:90px 20px 70px;width:100vw;margin-left:calc(50% - 50vw);background:#1f2a1a;color:#fff}
+.hero .bgl{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transition:opacity 1.6s ease}
+.hero .bgl.on{opacity:1}
+.hero:after{content:"";position:absolute;inset:0;z-index:1;background:radial-gradient(ellipse at center,rgba(10,16,8,.38) 0%,rgba(10,16,8,.08) 70%),linear-gradient(rgba(10,16,8,.26),rgba(10,16,8,.38))}
+.hero>p,.hero>h1{position:relative;z-index:2}
+.hero h1{text-shadow:0 2px 4px rgba(0,0,0,.8),0 4px 22px rgba(0,0,0,.7)}
+.hero .lead{color:#fff;font-size:1.25rem;text-shadow:0 1px 3px rgba(0,0,0,.85),0 2px 14px rgba(0,0,0,.7)}
+.hero .eyebrow{color:#ffe2cf;font-size:.9rem;text-shadow:0 1px 3px rgba(0,0,0,.85)}
+.hero+*{margin-top:26px}
+.eyebrow{font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--t);font-weight:700;margin:0 0 8px}
+h1{font-size:clamp(2rem,5vw,3rem);line-height:1.15;margin:0 0 12px}
+.lead{color:var(--mut);font-size:1.15rem;max-width:640px;margin:0 auto}
+.notice{background:#b3261e;color:#fff;border-radius:12px;padding:16px 20px;text-align:center;font-weight:600;margin:22px 0;box-shadow:0 6px 18px rgba(60,40,20,.2)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:24px;box-shadow:0 6px 18px rgba(60,40,20,.08);margin-bottom:22px}
+.card h2{margin:0 0 6px;font-size:1.3rem}
+.card p{margin:0 0 12px;color:var(--mut)}
+.pill{display:inline-block;padding:3px 12px;border-radius:999px;font-weight:700;font-size:.9rem;margin-right:8px}
+.ok{background:#e1efd9;color:#2f5a1f}.busy{background:#f8dfd3;color:#8a3512}
+.row{display:flex;gap:10px;flex-wrap:wrap}
+input[type=text]{flex:1;min-width:200px;padding:12px 14px;border:1px solid #b9a998;border-radius:10px;font-size:1rem}
+.btn{display:inline-block;padding:12px 22px;border-radius:999px;background:var(--g);color:#fff;font-weight:700;text-decoration:none;border:2px solid var(--g);cursor:pointer;font-size:1rem}
+.btn:hover{background:var(--gd);border-color:var(--gd)}
+.btn.o{background:transparent;color:var(--gd)}.btn.o:hover{background:var(--soft)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+@media(max-width:700px){.grid{grid-template-columns:1fr}header{flex-wrap:wrap;gap:8px}header nav a{margin:0 14px 0 0;font-size:.92rem}}
+footer{text-align:center;color:var(--mut);padding:10px 0 40px;font-size:.95rem}
+.fld{margin-bottom:14px}.fld label{display:block;font-weight:600;margin-bottom:5px}
+.fld input[type=text],.fld input[type=email]{width:100%;padding:12px 14px;border:1px solid #b9a998;border-radius:10px;font-size:1rem;min-width:0}
+.fld label.rad{display:inline-block;font-weight:400;margin-right:18px}
+#smsg.err{color:#a02020}
+.hint{display:block;margin-top:5px;color:var(--mut);font-size:.9rem}
+a{color:var(--t)}
+
+.em{color:var(--t);font-size:1.28em;font-weight:800;text-decoration:underline;text-decoration-thickness:3px;text-underline-offset:4px}
+.card h2 .em{line-height:1}
+.sub{font-weight:600;color:var(--ink)!important}
+.cal{border:1px solid var(--line);border-radius:12px;padding:12px;background:#fff;max-width:340px}
+.calh{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.calh b{font-size:1.05rem}
+.calh button{border:1px solid var(--line);background:var(--soft);border-radius:8px;width:36px;height:36px;font-size:1.1rem;cursor:pointer;color:var(--ink)}
+.calh button:disabled{opacity:.35;cursor:default}
+.cald{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;text-align:center}
+.cald .dn{font-size:.78rem;color:var(--mut);font-weight:700;padding:4px 0}
+.cald button{border:0;background:transparent;border-radius:8px;height:38px;font-size:.98rem;cursor:pointer;color:var(--ink)}
+.cald button:hover:not(:disabled){background:var(--soft)}
+.cald button:disabled{color:#c9bcab;cursor:default}
+.cald button.today{box-shadow:inset 0 0 0 2px var(--line)}
+.cald button.sel{background:var(--t);color:#fff;font-weight:700}
+.fld select,.fld textarea{width:100%;padding:12px 14px;border:1px solid #b9a998;border-radius:10px;font-size:1rem;font-family:inherit;background:#fff}
+.fld textarea{min-height:70px}
+.pick{font-weight:700;color:var(--gd);margin:10px 0 0}
+.twocol{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:700px){.twocol{grid-template-columns:1fr}}
+#lmsg.err{color:#a02020}#lmsg.ok2{color:#2f5a1f}
+
+#status{margin-top:-64px!important;position:relative;z-index:5;color:#fff;border:0;border-top:5px solid var(--t);padding:22px 24px 24px;
+ background:linear-gradient(135deg,#2f3b28 0%,#4a5e3d 60%,#5f7650 100%);box-shadow:0 18px 44px rgba(20,28,14,.45),0 2px 0 rgba(255,255,255,.12) inset}
+#status h2{color:#fff;font-size:1.05rem;letter-spacing:.14em;text-transform:uppercase;margin:0 0 14px;display:flex;align-items:center;gap:10px}
+.live{width:12px;height:12px;border-radius:50%;background:#7CFC5A;box-shadow:0 0 0 0 rgba(124,252,90,.7);animation:pulse 1.8s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(124,252,90,.7)}70%{box-shadow:0 0 0 12px rgba(124,252,90,0)}100%{box-shadow:0 0 0 0 rgba(124,252,90,0)}}
+.tiles{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:560px){.tiles{grid-template-columns:1fr}#status{margin-top:-48px!important}}
+.tile{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);border-radius:14px;padding:14px 18px;display:flex;align-items:center;gap:16px}
+.tn{font-size:2.6rem;font-weight:800;line-height:1;letter-spacing:-.02em;color:#b8f59f;min-width:2.4em}
+.tn small{font-size:.5em;font-weight:700;opacity:.8}
+.tile.busy .tn{color:#ffb98f}
+.tl{font-size:1rem;line-height:1.35;color:#fff}
+.tl strong{display:block;font-size:1.12rem}
+.tl span{color:#e4eed9}
+#latercard{scroll-margin-top:20px}
+</style>
+</head>
+<body>
+<header class="sans"><a href="https://example.org">Example Org</a><nav><a href="/" style="font-weight:700;border-bottom:2px solid #c0562b">Start a meeting</a><a href="/#latercard">Schedule a meeting</a><a href="https://example.org/meetings/">About</a></nav></header>
+<div class="wrap">
+<div class="hero"><div class="bgl" id="bgA"></div><div class="bgl" id="bgB"></div>
+<p class="eyebrow sans">Free for our community</p>
+<h1>Free meetings from Example Org</h1>
+<p class="lead">Video and audio meetings that are recorded, transcribed, and summarized for you. Everyone gets a private link to the notes.</p>
+</div>
+
+<div class="card sans" id="status">
+<h2><span class="live"></span>Live availability</h2>
+<div class="tiles">
+<div class="tile" id="sv"><div class="tn">...</div><div class="tl">Checking video sessions</div></div>
+<div class="tile" id="sa"><div class="tn">...</div><div class="tl">Checking audio sessions</div></div>
+</div>
+</div>
+
+<div class="card sans" id="startcard">
+<h2 id="sh">Start a meeting <span class="em">now</span></h2>
+<p id="sp">No account needed. Meetings start at 30 minutes, and near the end you can add 30 more, up to 90 minutes. Up to 8 people. You get the notes by email.</p>
+<form id="sf">
+<div class="fld"><label for="sn">Your name</label><input id="sn" type="text" maxlength="60" autocomplete="name" required></div>
+<div class="fld"><label for="se">Your email</label><input id="se" type="email" maxlength="120" autocomplete="email" required></div>
+<div class="fld" id="kindrow"><label>Type of meeting</label>
+<label class="rad"><input type="radio" name="kind" value="video" checked> Video</label>
+<label class="rad"><input type="radio" name="kind" value="audio"> Audio only (no cameras)</label></div>
+<div class="fld" id="titlerow"><label for="st">Meeting name (optional)</label><input id="st" type="text" maxlength="80" autocomplete="off"></div>
+<div class="fld" id="othersrow"><label for="so">Add emails of additional people you wish to invite (up to 7 additional)</label><input id="so" type="text" maxlength="600" placeholder="name@example.org, other@example.org" autocomplete="off"><small class="hint">Everyone will get a link to the meeting and the saved files afterwards.</small></div>
+<input id="sw" type="text" name="website" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">
+<p class="row"><button class="btn" type="submit" id="sb">Start meeting</button></p>
+<p id="smsg" style="margin:10px 0 0;font-weight:600"></p>
+<p style="margin:12px 0 0;font-size:14px;line-height:1.5;opacity:.85"><strong>Trouble joining?</strong> Content blockers, strict privacy settings, Private Relay or Lockdown Mode can stop video meetings from loading, especially in Safari. Try Chrome or Firefox, or turn off blockers for meet.example.org.</p>
+</form>
+</div>
+<div class="card sans" id="latercard">
+<h2>Start meeting <span class="em">later</span>?</h2>
+<p class="sub">Planning ahead? Choose your date and time.</p>
+<div class="fld"><label>Date</label><div class="cal" id="cal"></div></div>
+<div class="twocol">
+<div class="fld"><label for="lt">Time</label><select id="lt"></select></div>
+<div class="fld"><label for="lz">Time zone</label><select id="lz"></select></div>
+</div>
+<p class="pick" id="lpick">Pick a day on the calendar.</p>
+<div class="fld"><label for="ln">Meeting name</label><input id="ln" type="text" maxlength="120" placeholder="Board meeting" autocomplete="off"></div>
+<div class="fld"><label for="lh">Your email (the host, invitations come from you)</label><input id="lh" type="email" maxlength="120" autocomplete="email"></div>
+<div class="fld"><label for="le">Emails of the people to invite (up to 7 additional, separated by commas or new lines)</label><textarea id="le" maxlength="800" placeholder="name@example.org, other@example.org"></textarea><small class="hint">Everyone gets an invitation with a calendar file, and, after the meeting is complete, a private summary. Scheduled meetings run up to 90 minutes.</small></div>
+<p class="row"><button class="btn" type="button" id="lb">Reserve it and send invitations</button></p>
+<p class="hint">First time scheduling? We will email you a link to confirm before any invitations go out.</p>
+<p class="hint">Hosts: You can start your meeting up to 15 minutes before it begins. Login using the email address your invitation was sent to.</p>
+<p id="lmsg" style="margin:10px 0 0;font-weight:600"></p>
+</div>
+<div class="card sans">
+<h2>Joining someone else's meeting?</h2>
+<p>Just open the link your host sent you. Or type the room name here.</p>
+<form id="j" class="row"><input id="jr" type="text" placeholder="Room name" maxlength="60" autocomplete="off"><button class="btn o" type="submit">Join</button></form>
+</div>
+<div class="notice sans">All meetings are recorded, saved, transcribed, and summarized by AI. By joining or starting a meeting you agree to be recorded. Recordings are kept for up to 1 month and a private link is emailed to participants.</div>
+<footer class="sans">Questions? <a href="mailto:meetings-admin@example.org">meetings-admin@example.org</a> &middot; <a href="https://example.org/meetings/">Learn more</a></footer>
+</div>
+<script>
+function clean(s){return (s||"").trim().replace(/[^A-Za-z0-9_-]+/g,"-").replace(/^-+|-+$/g,"");}
+(function(){
+var q=new URLSearchParams(location.search),sched=(q.get("room")||"").toLowerCase().replace(/[^a-z0-9-]/g,"");
+if(sched){document.getElementById("sh").textContent="Start your scheduled meeting";
+document.getElementById("sp").textContent="Use the email address your invitation was sent to. Scheduled meetings run up to 90 minutes.";
+["kindrow","titlerow","othersrow"].forEach(function(i){document.getElementById(i).style.display="none";});
+document.getElementById("sb").textContent="Start scheduled meeting";}
+document.getElementById("sf").onsubmit=function(e){e.preventDefault();
+  var m=document.getElementById("smsg"),b=document.getElementById("sb");
+  m.className="";m.textContent="Starting...";b.disabled=true;
+  var kind=(document.querySelector("input[name=kind]:checked")||{}).value||"video";
+  var tmo=setTimeout(function(){m.className="err";m.textContent="This is taking too long. A content blocker or privacy setting may be blocking the request. Try Chrome or Firefox, or turn blockers off for this site.";b.disabled=false;},12000);
+  fetch("/api/start",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({
+    name:document.getElementById("sn").value,email:document.getElementById("se").value,kind:kind,
+    title:document.getElementById("st").value,others:document.getElementById("so").value,
+    website:document.getElementById("sw").value,room:sched})})
+  .then(function(r){return r.json().then(function(d){return {ok:r.ok,d:d};});})
+  .then(function(x){
+    clearTimeout(tmo);
+    if(x.ok&&x.d.url){m.textContent="Opening your meeting...";location.href=x.d.url;return;}
+    var t=x.d&&x.d.detail?x.d.detail:"Something went wrong.";
+    if(x.d&&x.d.free_at){t+=" It should open around "+fmt(x.d.free_at)+" (your local time).";}
+    if(Array.isArray(t)){t="Please check the form and try again.";}
+    m.className="err";m.textContent=t;b.disabled=false;})
+  .catch(function(){clearTimeout(tmo);m.className="err";m.textContent="Could not reach the server. A content blocker or privacy setting may be blocking it. Try Chrome or Firefox, or turn blockers off for this site.";b.disabled=false;});
+};})();
+document.getElementById("j").onsubmit=function(e){e.preventDefault();
+  var n=clean(document.getElementById("jr").value); if(n){location.href="/"+n;}};
+function fmt(iso){try{return new Date(iso).toLocaleTimeString([], {hour:"numeric",minute:"2-digit"});}catch(e){return iso;}}
+function tile(n,d,name,ok,txt){return '<div class="tn">'+n+(d?'<small>/'+d+'</small>':'')+'</div><div class="tl"><strong>'+name+'</strong><span>'+txt+'</span></div>';}
+function load(){fetch("/api/availability").then(function(r){return r.json();}).then(function(d){
+  var v=document.getElementById("sv"),a=document.getElementById("sa");
+  if(!d.known){v.innerHTML='<div class="tl"><strong>Status unavailable</strong><span>You can still try to start a session.</span></div>';a.innerHTML="";return;}
+  var vf=(d.video.max||1)-(d.video.in_use||0);
+  v.className="tile"+(d.video.available?"":" busy");
+  v.innerHTML=d.video.available?tile(d.video.max?vf:"Open",d.video.max||0,"Video sessions","", "available now"):tile("Busy",0,"Video sessions","","should open around "+fmt(d.video.free_at)+" (your local time)");
+  a.className="tile"+(d.audio.free>0?"":" busy");
+  a.innerHTML=tile(d.audio.free,d.audio.total,"Audio-only sessions","","available now");
+}).catch(function(){document.getElementById("sv").innerHTML='<div class="tl"><strong>Status unavailable</strong><span>Please try again shortly.</span></div>';});}
+load();setInterval(load,30000);
+</script>
+<script>
+(function(){
+var L=[1,2,3,4,5,6,7].sort(function(){return Math.random()-0.5;}).map(function(n){return "/bg/"+n+".jpg";});
+var a=document.getElementById("bgA"),b=document.getElementById("bgB"),i=0,cur=a;
+function show(el,u){el.style.backgroundImage="url("+u+")";el.classList.add("on");}
+show(a,L[0]);
+setInterval(function(){
+  i=(i+1)%L.length;var nx=(cur===a)?b:a;
+  var img=new Image();img.onload=function(){show(nx,L[i]);cur.classList.remove("on");cur=nx;};img.src=L[i];
+},9000);
+})();
+</script>
+<script>
+(function(){
+var MN=["January","February","March","April","May","June","July","August","September","October","November","December"];
+var today=new Date();today.setHours(0,0,0,0);
+var maxd=new Date(today.getTime()+170*86400000);
+var view=new Date(today.getFullYear(),today.getMonth(),1),sel=null;
+var cal=document.getElementById("cal"),pick=document.getElementById("lpick"),ts=document.getElementById("lt"),tz=document.getElementById("lz");
+for(var h=6;h<=22;h++){for(var m=0;m<60;m+=30){var v=("0"+h).slice(-2)+":"+("0"+m).slice(-2),hh=h%12||12,lab=hh+":"+("0"+m).slice(-2)+(h<12?" AM":" PM");
+ var o=document.createElement("option");o.value=v;o.textContent=lab;if(v==="10:00")o.selected=true;ts.appendChild(o);}}
+var ZL=[["Asia/Dhaka","Dhaka"],["Asia/Bangkok","Bangkok, Jakarta"],["Asia/Singapore","Singapore, Hong Kong, Perth"],["Asia/Tokyo","Tokyo, Seoul"],["Australia/Brisbane","Brisbane"],["Pacific/Noumea","New Caledonia"],["Pacific/Fiji","Fiji"],["Pacific/Auckland","Auckland"],["Pacific/Honolulu","Hawaii"],["Pacific/Gambier","Gambier Islands"],["America/Anchorage","Alaska"],["America/Los_Angeles","Pacific"],["America/Denver","Mountain"],["America/Chicago","Central"],["America/New_York","Eastern"],["America/Halifax","Atlantic"],["Atlantic/South_Georgia","South Georgia"],["Atlantic/Cape_Verde","Cape Verde"],["Atlantic/Reykjavik","Iceland"],["Europe/London","London"],["Europe/Paris","Paris, Berlin, Rome"],["Europe/Moscow","Moscow, Istanbul"],["Asia/Dubai","Dubai"],["Asia/Karachi","Pakistan"]];
+function offMin(zone,dt){try{var f=new Intl.DateTimeFormat("en-US",{timeZone:zone,hourCycle:"h23",year:"numeric",month:"numeric",day:"numeric",hour:"numeric",minute:"numeric"}).formatToParts(dt),o={};f.forEach(function(p){o[p.type]=+p.value;});return (Date.UTC(o.year,o.month-1,o.day,o.hour,o.minute)-dt.getTime())/60000;}catch(e){return 0;}}
+function fillZones(){var ref=sel?new Date(sel+"T12:00:00Z"):new Date(),cur=tz.value||"America/Los_Angeles",pac=offMin("America/Los_Angeles",ref);
+ var rows=ZL.map(function(z){var d=Math.round((offMin(z[0],ref)-pac)/30)/2;if(d>12)d-=24;if(d<-11)d+=24;return {id:z[0],name:z[1],d:d};});
+ rows.sort(function(a,b){return a.d-b.d;});
+ tz.innerHTML="";rows.forEach(function(r){var o=document.createElement("option");o.value=r.id;
+  var t=r.d===0?"":(r.d>0?"+"+r.d:""+r.d);while(t.length<3)t="\u2007"+t;o.dataset.n=r.name;o.textContent=t+(r.d===0?"\u00a0\u00a0":"\u00a0\u00a0\u00a0")+r.name;if(r.id===cur)o.selected=true;tz.appendChild(o);});}
+fillZones();
+function iso(d){return d.getFullYear()+"-"+("0"+(d.getMonth()+1)).slice(-2)+"-"+("0"+d.getDate()).slice(-2);}
+function label(){if(!sel){pick.textContent="Pick a day on the calendar.";return;}
+ var d=new Date(sel+"T12:00:00");pick.textContent=d.toLocaleDateString([],{weekday:"long",month:"long",day:"numeric"})+" at "+ts.options[ts.selectedIndex].text+" "+tz.options[tz.selectedIndex].dataset.n;}
+function draw(){cal.innerHTML="";
+ var head=document.createElement("div");head.className="calh";
+ var pv=document.createElement("button");pv.type="button";pv.textContent="\u2039";pv.setAttribute("aria-label","Previous month");
+ pv.disabled=(view.getFullYear()===today.getFullYear()&&view.getMonth()===today.getMonth());
+ pv.onclick=function(){view=new Date(view.getFullYear(),view.getMonth()-1,1);draw();};
+ var nx=document.createElement("button");nx.type="button";nx.textContent="\u203a";nx.setAttribute("aria-label","Next month");
+ nx.disabled=new Date(view.getFullYear(),view.getMonth()+1,1)>maxd;
+ nx.onclick=function(){view=new Date(view.getFullYear(),view.getMonth()+1,1);draw();};
+ var t=document.createElement("b");t.textContent=MN[view.getMonth()]+" "+view.getFullYear();
+ head.appendChild(pv);head.appendChild(t);head.appendChild(nx);cal.appendChild(head);
+ var g=document.createElement("div");g.className="cald";
+ ["S","M","T","W","T","F","S"].forEach(function(n){var d=document.createElement("div");d.className="dn";d.textContent=n;g.appendChild(d);});
+ var first=new Date(view.getFullYear(),view.getMonth(),1).getDay();
+ for(var i=0;i<first;i++){g.appendChild(document.createElement("span"));}
+ var dim=new Date(view.getFullYear(),view.getMonth()+1,0).getDate();
+ for(var d=1;d<=dim;d++){(function(d){var dt=new Date(view.getFullYear(),view.getMonth(),d),b=document.createElement("button");b.type="button";b.textContent=d;
+  var k=iso(dt);b.disabled=dt<today||dt>maxd;if(dt.getTime()===today.getTime())b.className="today";
+  if(sel===k)b.className+=" sel";
+  b.onclick=function(){sel=k;fillZones();label();draw();};g.appendChild(b);})(d);}
+ cal.appendChild(g);}
+ts.onchange=label;tz.onchange=label;draw();
+var lm=document.getElementById("lmsg"),lb=document.getElementById("lb");
+lb.onclick=function(){lm.className="";
+ if(!sel){lm.className="err";lm.textContent="Pick a day on the calendar first.";return;}
+ var host=document.getElementById("lh").value.trim();
+ if(!host){lm.className="err";lm.textContent="Enter your email so we know who is hosting.";return;}
+ lm.textContent="Working...";lb.disabled=true;
+ fetch("/api/schedule-request",{method:"POST",headers:{"Content-Type":"application/json"},
+  body:JSON.stringify({website:document.getElementById("sw").value,title:document.getElementById("ln").value,when:sel+"T"+ts.value,tz:tz.value,host:host,emails:document.getElementById("le").value})})
+ .then(function(r){return r.json().catch(function(){return {};}).then(function(d){return {ok:r.ok,s:r.status,d:d};});})
+ .then(function(x){lb.disabled=false;
+  if(x.ok&&x.d.mode==="confirm"){lm.className="ok2";lm.textContent="Almost done! We emailed a confirmation link to "+host+". Your meeting is not booked until you click it. The link works for 24 hours.";return;}
+  if(x.ok){lm.className="ok2";lm.innerHTML="Reserved! "+(x.d.invited||0)+" invitation(s) sent. Room link: <a href=\""+x.d.url+"\">"+x.d.url+"</a>";return;}
+  var t=x.d&&x.d.detail?x.d.detail:"Something went wrong.";if(Array.isArray(t))t="Please check the form and try again.";lm.className="err";lm.textContent=t;})
+ .catch(function(){lb.disabled=false;lm.className="err";lm.textContent="Could not reach the server. Please try again.";});};
+})();
+</script>
+</body>
+</html>
